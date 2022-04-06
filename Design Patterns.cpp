@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 
 
-namespace whoamifk {
+namespace Auth {
     class User {
     private:
         std::string _name;
@@ -12,9 +12,4 @@ namespace whoamifk {
 
     };
 
-}
-
-int main()
-{
-    std::cout << "Hello World!\n";
 }

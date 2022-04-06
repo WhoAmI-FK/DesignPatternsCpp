@@ -1,18 +1,6 @@
 #include <iostream>
-#include <string>
+ #include <string>
 #include <regex>
-namespace Auth {
-    class User {
-    private:
-        std::string _name;
-        std::string _email;
-        std::string _password;
-    public:
-        explicit User() = default;
-
-    };
-
-}
 
 namespace validators {
     class StringValidator {
@@ -100,7 +88,22 @@ namespace validators {
         }
     };
 };
-
+using namespace validators;
 int main()
 {
+    // test
+    StringValidator* emailValidator = new BaseValidator;
+    emailValidator
+        ->setNext(new NotEmptyValidator)
+        ->setNext(new RegexValidator("email adress",
+            "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$"));
+    std::cout << "Checking Emails ----------------\n";
+    std::cout << "Input: \n" << emailValidator->validate("") << "\n\n";
+    std::cout << "Input: shaun\n" << emailValidator->validate("shaun") << "\n\n";
+    std::cout << "Input: shaun@test.com\n" <<
+        emailValidator->validate("shaun@test.com") << "\n\n";
+    delete emailValidator;
+    // end test
+    
+    return 0;
 }
