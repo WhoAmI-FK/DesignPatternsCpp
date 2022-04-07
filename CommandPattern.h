@@ -49,10 +49,29 @@ namespace canvas {
 		}
 	};
 	class Button {
+	private:
+		Command* _command;
 	public:
-		virtual ~Button() {};
-		virtual void click() = 0;
+		Button(Command* command) :
+			_command(command)
+		{
+
+		}
+
+		void click() {
+			_command->execute();
+		}
 	};
+
+	std::string vectorToString(std::vector<std::string> v) {
+		std::string result = "";
+		for (int i = 0; i < v.size(); ++i) {
+			result.append(v.at(i) + ", ");
+		}
+		return result;
+	}
+}
+	/*
 	class AddTriangleButton : public Button {
 	private:
 		Canvas* _canvas;
@@ -90,3 +109,4 @@ namespace canvas {
 		}
 	};
 };
+*/
