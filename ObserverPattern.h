@@ -5,7 +5,7 @@ namespace observers {
 	class Subscriber {
 	public:
 		virtual void notify(const std::string& publisherName, const std::string& message) = 0;
-		virtual std::string getName();
+		virtual std::string getName() = 0;
 	};
 	class Publisher {
 	public:
@@ -34,5 +34,20 @@ namespace observers {
 				sub->notify(groupName, message);
 			}
 		};
+	};
+	class ChatUser : public Subscriber {
+	private:
+		std::string userName;
+	public:
+		ChatUser(const std::string& userName) : userName(userName) {
+
+		}
+		void notify(const std::string& publisherName,
+			const std::string& message) override {
+			std::cout << userName << " received a new message from " << publisherName << ": " << message << "\n";
+		}
+		std::string getName() override {
+			return userName;
+		}
 	};
 };

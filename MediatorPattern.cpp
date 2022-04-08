@@ -1,4 +1,5 @@
 #include "MediatorPattern.h"
+/*
 using namespace user_interface;
 int main() {
 	user_interface::UserInterface* ui = new user_interface::UserInterface;
@@ -18,3 +19,4 @@ int main() {
 	delete ui;
 	return 0;
 }
+*/

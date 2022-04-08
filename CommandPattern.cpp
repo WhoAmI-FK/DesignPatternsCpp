@@ -1,5 +1,5 @@
 #include "CommandPattern.h"
-// Testing functionality
+// test of the pattern
 /*
 using namespace canvas;
 int main() {
