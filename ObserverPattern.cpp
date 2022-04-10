@@ -1,5 +1,5 @@
 #include "ObserverPattern.h"
-
+/*
 using namespace observers;
 int main(){
 	ChatUser* user1 = new ChatUser("Jim");
@@ -22,3 +22,4 @@ int main(){
 	delete group2;
 	return 0;
 }
+*/
