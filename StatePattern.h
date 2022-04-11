@@ -12,7 +12,7 @@ namespace state {
     private:
         State* nextState;
     public:
-        PurchasedState(State* nextState)
+        PurchasedState(State* nextState=nullptr)
             : nextState(nextState)
         {
 
@@ -29,7 +29,7 @@ namespace state {
     private:
         State* nextState;
     public:
-        InTransitState(State* nextState)
+        InTransitState(State* nextState=nullptr)
             : nextState(nextState)
         {
 
@@ -45,7 +45,7 @@ namespace state {
     private:
         State* nextState;
     public:
-        DeliveredState(State* nextState)
+        DeliveredState(State* nextState=nullptr)
             : nextState(nextState)
         {
 
@@ -60,36 +60,19 @@ namespace state {
 
     class Purchase {
         std::string productName;
-        std::string currentState;
+        State* currentState;
     public:
-        Purchase(const std::string& productName)
-            : productName(productName), currentState("PURCHASED") {};
+        Purchase(const std::string& productName,
+            State* initialState)
+            : productName(productName), currentState(initialState) {};
         std::string getDescription() {
-            std::string description = productName + " - " + currentState + "\n";
-
-            if (currentState == "PURCHASED") {
-                description += "Will be shipping soon\n";
-            }
-            else if (currentState == "IN_TRANSIT") {
-                description += "Your item is on the way\n";
-            }
-            else if (currentState == "DELIVERED") {
-                description += "Your item has arrived\n";
-            }
-
-            return description;
+            return currentState->getDescription();
         }
 
         void goToNextState() {
-            if (currentState == "PURCHASED") {
-                currentState = "IN_TRANSIT";
-            }
-            else if (currentState == "IN_TRANSIT") {
-                currentState = "DELIVERED";
-            }
-            else if (currentState == "DELIVERED") {
-                std::cout << "No more states!";
-            }
+            if(currentState->getNextState())
+            currentState = currentState->getNextState();
+            else std::cout << "No more states!\n";
         };
     };
 };

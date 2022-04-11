@@ -1,4 +1,4 @@
-#include "InterpreterPattern.h"
+/*#include "InterpreterPattern.h"
 using namespace interpreters;
 
 int main()
@@ -18,3 +18,4 @@ int main()
 	delete plus;
 	return 0;
 }
+*/
