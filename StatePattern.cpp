@@ -1,5 +1,5 @@
 #include "StatePattern.h"
-
+/*
 using namespace state;
 
 int main()
@@ -25,3 +25,4 @@ int main()
 	delete purchase;
 	return 0;
 }
+*/

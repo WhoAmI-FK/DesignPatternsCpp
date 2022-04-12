@@ -5,10 +5,11 @@ namespace strategy {
 
     class GreetingStrategy {
     public:
+        virtual ~GreetingStrategy() {};
         virtual void greet(const std::string& name) = 0;
     };
 
-    class FormalGreetingStrategy: GreetingStrategy {
+    class FormalGreetingStrategy: public GreetingStrategy {
     public:
         void greet(const std::string& name) override {
             std::cout << "Good morning " << name << ", how do you do?\n";
@@ -28,5 +29,21 @@ namespace strategy {
             std::cout << "Hey " << name << ", what's up?\n";
         }
     };
+    class Person {
+    private:
+        GreetingStrategy* greetingStrategy;
+    public:
+        Person(GreetingStrategy* greetingStrategy)
+            : greetingStrategy(greetingStrategy)
+        {
 
+        };
+        ~Person() {
+            delete greetingStrategy;
+        }
+        void greet(const std::string& name)
+        {
+            greetingStrategy->greet(name);
+        }
+    };
 };
