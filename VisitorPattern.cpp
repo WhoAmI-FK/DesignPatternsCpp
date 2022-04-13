@@ -1,5 +1,5 @@
 #include "VisitorPattern.h"
-
+/*
 using namespace visitors;
 
 int main()
@@ -24,3 +24,4 @@ int main()
 	delete tfv;
 	return 0;
 }
+*/
