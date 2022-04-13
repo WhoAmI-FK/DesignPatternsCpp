@@ -1,5 +1,5 @@
 #include "StrategyPattern.h"
-
+/*
 using namespace strategy;
 
 int main()
@@ -23,3 +23,4 @@ int main()
 	politician.greet("Shaun");
 	return 0;
 }
+*/

@@ -18,4 +18,20 @@ namespace templates {
 			return intro(to) + occasion() + closing(from);
 		}
 	};
-}
+	class BirthdayCardTemplate :public GreetingCardTemplate {
+	protected:
+		std::string occasion() override {
+			return "Happy Birthday! Hope you have a wonderful day and lots of cake.";
+		};
+	};
+
+	class NewYearsCardTemplate : public GreetingCardTemplate {
+	protected:
+		std::string intro(const std::string& to) override {
+			return to + "!!!\n";
+		}
+		std::string occasion() override {
+			return "Happy New Years!!! See you at the gym tomorrow!\n";
+		}
+	};
+};
